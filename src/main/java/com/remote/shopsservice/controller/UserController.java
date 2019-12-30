@@ -1,6 +1,7 @@
 package com.remote.shopsservice.controller;
 
 import com.remote.shopsservice.model.User;
+import com.remote.shopsservice.model.dto.RegisterDto;
 import com.remote.shopsservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,10 +22,12 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping(value = "/sign-up")
-    public ResponseEntity<User> signUp(@RequestBody User user) {
+    @PostMapping(value = "/register")
+    public ResponseEntity<User> register(@RequestBody RegisterDto dto) {
         try {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            if(!dto.getPassword().equals(dto.getConfirmationPassword())) throw new Exception();
+            User user = User.builder().username(dto.getUsername())
+                    .password(passwordEncoder.encode(dto.getPassword())).build();
             service.create(user);
             return new ResponseEntity<>(null, HttpStatus.CREATED);
         } catch (Exception e) {

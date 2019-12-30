@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -48,11 +49,11 @@ public class User implements Serializable, UserDetails {
 
     @Builder.Default
     @OneToMany
-    private List<Shop> likedShops;
+    private List<Shop> likedShops = new ArrayList<Shop>();
 
     @Builder.Default
     @OneToMany
-    private List<Shop> dislikedShops;
+    private List<Shop> dislikedShops = new ArrayList<Shop>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

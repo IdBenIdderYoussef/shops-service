@@ -23,8 +23,9 @@ public class Shop {
     private Long id;
 
     private String name;
-    private double latitude;
-    private double longitude;
+
+    @Embedded
+    private Location location;
 
     @CreatedDate
     LocalDate createdDate;
