@@ -23,6 +23,7 @@ public class Shop {
     private Long id;
 
     private String name;
+    private String image;
 
     @Embedded
     private Location location;
