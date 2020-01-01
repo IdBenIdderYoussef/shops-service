@@ -26,6 +26,10 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
+        User user = User.builder().username("test@gmail.com").password(passwordEncoder.encode("secret")).build();
+        userService.create(user);
+
         Shop shop = Shop.builder().name("Magic Shop").image("https://res-console.cloudinary.com/dhvkitjme/thumbnails/v1/image/upload/v1577877005/c2hvcHMvNUFfeTRkYWRr/preview")
                 .location(Location.builder().latitude(31.669746).longitude(-7.973328).build()).build();
         Shop shop1 = Shop.builder().name("Kei Electrical").image("https://res-console.cloudinary.com/dhvkitjme/thumbnails/v1/image/upload/v1577876984/c2hvcHMvZGVlcC1lbGVjdHJpY2Fscy1hZGFqYW4tZG4tc3VyYXQtZWxlY3RyaWNhbC1zaG9wcy1ndHlsb19qeXR0c3E=/preview")
@@ -37,9 +41,9 @@ public class DataInitializer implements CommandLineRunner {
         Shop shop4 = Shop.builder().name("interSport").image("https://res-console.cloudinary.com/dhvkitjme/thumbnails/v1/image/upload/v1577876964/c2hvcHMvc3BvcnRfZHIxYWE0/preview")
                 .location(Location.builder().latitude(39.916668).longitude(116.383331).build()).build();
         shopService.create(shop);
-        shopService.create(shop1);
-        shopService.create(shop3);
-        shopService.create(shop2);
         shopService.create(shop4);
+        shopService.create(shop2);
+        shopService.create(shop3);
+        shopService.create(shop1);
     }
 }

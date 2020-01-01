@@ -37,6 +37,7 @@ public class User implements Serializable, UserDetails {
     // email is the username
     @NotEmpty
     @Email
+    @Column(unique = true)
     private String username;
     @NotEmpty
     private String password;
@@ -49,7 +50,7 @@ public class User implements Serializable, UserDetails {
 
     @Builder.Default
     @OneToMany
-    private List<Shop> likedShops = new ArrayList<Shop>();
+    private List<Shop> preferredShops = new ArrayList<Shop>();
 
     @Builder.Default
     @OneToMany
