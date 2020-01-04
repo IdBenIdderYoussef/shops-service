@@ -6,7 +6,6 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -16,9 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Getter
@@ -53,8 +50,9 @@ public class User implements Serializable, UserDetails {
     private List<Shop> preferredShops = new ArrayList<Shop>();
 
     @Builder.Default
-    @OneToMany
-    private List<Shop> dislikedShops = new ArrayList<Shop>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<UserDislikedShop> dislikedShops = new HashSet<UserDislikedShop>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
