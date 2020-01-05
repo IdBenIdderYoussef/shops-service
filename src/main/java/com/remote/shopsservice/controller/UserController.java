@@ -23,16 +23,18 @@ public class UserController {
     private PasswordEncoder passwordEncoder;
 
     @PostMapping(value = "/register")
-    public ResponseEntity<User> register(@RequestBody RegisterDto dto) {
+    public ResponseEntity register(@RequestBody RegisterDto dto) {
+
+        if (!dto.getPassword().equals(dto.getConfirmationPassword())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("The password does not match the confirmation password.");
+        }
+        User user = User.builder().username(dto.getUsername())
+                .password(passwordEncoder.encode(dto.getPassword())).build();
         try {
-            if(!dto.getPassword().equals(dto.getConfirmationPassword())) throw new Exception();
-            User user = User.builder().username(dto.getUsername())
-                    .password(passwordEncoder.encode(dto.getPassword())).build();
             service.create(user);
-            return new ResponseEntity<>(null, HttpStatus.CREATED);
+            return ResponseEntity.status(HttpStatus.OK).body("register successfully");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("email is already registered");
         }
     }
 }
