@@ -6,7 +6,7 @@ This is a **spring-boot** rest api with **java 8**.
 
 Rest Api for full-stack united remote coding challenge.<br/>
 
-### Features of the api
+## Features of the api
 
 This api provide a list of functionality :
 
@@ -16,7 +16,7 @@ This api provide a list of functionality :
 - Get the list of preferred shops.
 - Dislike a shop, so it won't be in the main list of shops within the next two hours.
 
-###The Implementation of the api :
+## The Implementation of the api :
 
 This rest api build using a multi-layer architecture, in which there is six layers:
 
