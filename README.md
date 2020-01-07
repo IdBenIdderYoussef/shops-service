@@ -1,6 +1,6 @@
 # Shops Service
 
-This is a **spring-boot** rest api with java 8.
+This is a **spring-boot** rest api with **java 8**.
 
 ## Description
 
