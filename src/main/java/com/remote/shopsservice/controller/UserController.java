@@ -32,7 +32,7 @@ public class UserController {
                 .password(passwordEncoder.encode(dto.getPassword())).build();
         try {
             service.create(user);
-            return ResponseEntity.status(HttpStatus.OK).body("register successfully");
+            return ResponseEntity.status(HttpStatus.OK).build();
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("email is already registered");
         }
