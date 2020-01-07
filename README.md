@@ -69,6 +69,6 @@ For build and package.
 ##### Lombok :
 Facilitate and reduce the amount of code, provide a lot of annotations. Also have a pre-implementation of the builder design pattern.
 
-#### Java JWT:
+##### Java JWT:
 It's a java implementation of JSON Web Token (JWT) standard.
 
