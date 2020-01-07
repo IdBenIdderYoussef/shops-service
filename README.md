@@ -1,6 +1,6 @@
 # Shops Service
 
-This is a **spring-boot** rest api.
+This is a **spring-boot** rest api with java 8.
 
 ## Description
 
@@ -12,7 +12,7 @@ This api provide a list of functionality :
 
 - Sign up and sign in using email and password.
 - Get the list of shops sorting by distance if the user provide his location or just with the order of appearance in database if he don't.<br/>
-- Like a shop, so it will be add the preferred shops list, and will not be with the main list of shops. Also the user can remove his like.
+- Like a shop, so it will be add the preferred shops list, and won't be with the main list of shops. Also the user can remove his like.
 - Get the list of preferred shops.
 - Dislike a shop, so it won't be in the main list of shops within the next two hours.
 
